@@ -18,11 +18,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-});
 
-Route::prefix('notifications')->name('notifications.')->group(function () {
-    Route::get('/', [NotificationController::class, 'index'])->name('index');
-    Route::post('/', [NotificationController::class, 'store'])->name('store');
+    Route::prefix('notifications')->name('notifications.')->group(function () {
+        Route::post('/', [NotificationController::class, 'store'])->name('store');
+        Route::get('/{id?}', [NotificationController::class, 'index'])->name('index');
+        Route::post('/mark-read', [NotificationController::class, 'markRead'])->name('mark.read');
+    });
 });
 
 Route::prefix('users')->name('users.')->group(function () {

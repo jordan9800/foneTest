@@ -59,7 +59,7 @@
             </ul>
             <ul class="nav navbar-nav float-right">
             <li class="dropdown dropdown-user nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i><span>
+            <a class="nav-link" href="{{ url('/notifications?status=unread') }}"><i class="fa fa-bell-o"></i><span>
               @php
               $unreadNotifications = auth()->user()->unreadNotifications()
               ->where('data->expiry_date', '>', date('Y-m-d'))
