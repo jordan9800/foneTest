@@ -30,7 +30,6 @@
                                       <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                       <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                       <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    
                                   </ul>
                               </div>
                           </div>
@@ -38,6 +37,11 @@
                               <div class="card-body card-dashboard">
                                 <div class="selectSearch">
                                     <h3 class="card-text">Notifications</h3>
+                                    <form method ="POST" action="{{ route('notifications.mark.read') }}">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $user_id }}">
+                                        <button type="sbumit" class = "btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info">Mark All Read</button>
+                                    </form>
                                 </div>
                                   
                                   <table class="table table-striped table-bordered file-export">
@@ -58,13 +62,16 @@
                                             <td>{{ $notification->data['expiry_date'] }}</td>
                                             <td>{{ $notification->data['type'] }}</td>
                                             <td>
+                                              @if(isset($notification->read_at))
+                                               - 
+                                              @else
                                                 <form method ="POST" action="{{ route('notifications.mark.read') }}">
                                                     @csrf
                                                     <input type="hidden" name="notification_id" value="{{ $notification->id }}">
                                                     <input type="hidden" name="user_id" value="{{ $user_id }}">
-                                                    <button type="sbumit" class = "btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info"><i class="ft-eye-off"></i>Mark as Read</button>
+                                                    <button type="sbumit" class = "btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info"><i class="fa fa-check"></i> Mark Read</button>
                                                 </form>
-                                            
+                                              @endif
                                             </td>
                                           </tr>
                                         

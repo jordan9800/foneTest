@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::patch('/{id}', [UserController::class, 'update'])->name('update');
+    Route::get('/{id}', [UserController::class, 'edit'])->name('edit');
 });
 
 Route::impersonate();

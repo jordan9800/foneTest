@@ -73,7 +73,7 @@
             <ul class="nav navbar-nav float-right">
               <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="{{ url('admin/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></span><span class="user-name">{{ auth()->user()->name }}</span></a>
                 <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="fa fa-id-card-o"></i> View Profile</a>
-                   <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
+                   <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('users.edit', auth()->user()->id) }}"><i class="ft-user"></i> Edit Profile</a>
                   <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf

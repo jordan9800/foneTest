@@ -68,12 +68,11 @@ class NotificationController extends Controller
         }
 
         $notifications = $user->notifications()
-            ->when($attributes['notification_id'], function ($query) use ($attributes) {
+            ->when(isset($attributes['notification_id']) && $attributes['notification_id'], function ($query) use ($attributes) {
                 $query->where('id', $attributes['notification_id']);
             })->get();
 
         if ($notifications->isNotEmpty()) {
-
             $notifications->markAsRead();
 
             return redirect()->back()->withSuccess('Notification marked as read!');
