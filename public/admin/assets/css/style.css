@@ -1,0 +1,164 @@
+.app-content .stepsVertical .wizard > .steps{
+	float:left;
+	width:28%;
+	height: 650px;
+	overflow-y: scroll;
+	padding-left: 15px;
+	background: #fff;
+}
+.app-content .stepsVertical .wizard > .content, .app-content .stepsVertical .wizard > .actions {
+	float:right;
+	width:70%;
+	background: #fff;
+	padding: 15px;
+}
+.app-content .stepsVertical .wizard > .steps > ul{
+	display: block;
+}
+.app-content .stepsVertical .wizard > .steps .step{
+	left:0;
+	margin-left: unset;
+}
+.app-content .stepsVertical .wizard > .steps > ul > li{
+	display: block;
+}
+.app-content .stepsVertical .wizard.wizard-circle > .steps > ul > li::after{
+	width: 5px;
+	height: 100%;
+	left: 23px;
+}
+.app-content .stepsVertical .wizard.wizard-circle > .steps > ul > li::before{
+	width: 0;
+}
+.app-content .stepsVertical .card .card-body{
+	padding-left: 0;
+	padding-right: 0;
+}
+.app-content .stepsVertical .wizard > .steps > ul > li > a{
+	padding-top: 0;
+}
+.app-content .stepsVertical .wizard > .steps > ul > li > a span:nth-child(3){
+	display: flex;
+	padding-left: 60px;
+	height: 50px;
+	align-items: center;
+}
+.app-content .stepsVertical .wizard > .steps > ul > li.disabled > a span:nth-child(2), .app-content .stepsVertical .wizard > .steps > ul > li.done > a span:nth-child(2){
+	display: flex;
+	padding-left: 60px;
+	height: 50px;
+	align-items: center;
+}
+.stepsVertical .card{
+	box-shadow: none;
+}
+.stepsVertical .skin-square label{
+	margin-bottom: 15px;
+}
+.stepsVertical .skin-square span{
+	padding-right: 50px;
+}
+.stepsVertical .select2-container{
+	width: 100% !important;
+}
+.stepsVertical .select2-container--default .select2-selection--single{
+	border: 1px solid #ccd6e6;
+}
+.stepsVertical .select2-container--default .select2-selection--single:focus{
+	border-color: #00B5B8;
+}
+.stepsVertical .input-group > .form-control:not(:last-child), .stepsVertical .input-group > .custom-select:not(:last-child){
+	border-bottom-right-radius: 0.25rem;
+	border-top-right-radius: 0.25rem;
+}
+.stepsVertical .p-r-60 span{
+	padding-right: 60px;
+}
+.stepsVertical .m-b-25{
+	margin-bottom: 25px;
+}
+
+.pd00 {
+    padding: 15px 0px;
+}
+.pd00 .btnInfo {
+    text-transform: uppercase;
+    padding: 10px 25px;
+}
+.imagesResize{
+	width: 40px;
+	border-radius: 50%;
+}
+.deleteCnfrm .modal-header, .deleteCnfrm .modal-footer {
+    border-bottom: none;
+    border-top: none;
+}
+.deleteCnfrm .modal-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+.btn-model{margin-top:4px;}
+
+.formFields{
+	padding: 0 20px 20px;
+}
+.formFields .inputField, .upadteBeat{
+	box-sizing: border-box;
+	margin: 10px 0;
+	border: 1px solid #888;
+	padding: 10px;
+	border-radius: 5px;
+	width: 100%;
+}
+.addBeatModal h2 {
+    background-color: #00b5b8;
+    padding: 5px 20px;
+    color: #fff;
+}
+.buy-now{
+	position: relative;
+	width: 50%;
+	margin: auto 0 auto auto;
+}
+
+.select2-container{
+	width: 100% !important;
+}
+
+body.vertical-layout.vertical-menu.menu-expanded .navbar .navbar-container{
+    margin-left: 310px;
+}
+.btn.btn-primary{
+    color: #fff !important;
+}
+.selectSearch {
+    margin-bottom: 15px;
+}
+.selectSearch form{
+    display: flex;
+    float: right;
+    align-items: center;
+}
+.selectSearch select.form-control {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+.selectSearch .btn{
+    border-radius: 0 0.25rem 0.25rem 0;
+    color: #fff;
+}
+.editProBtn {
+    display: flex;
+    align-items: center;
+}
+.editProBtn h3{
+    width: 100%;
+}
+.editProBtn a{
+    margin-top: 25px;
+}
+
+@media only screen and (max-width: 480px){
+    .selectSearch form{
+        float: none;
+    }
+}
