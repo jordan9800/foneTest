@@ -69,11 +69,11 @@
                                                 <td>On</td>
                                             @endif 
                                               <td>
-                                                <a href="#" class="actionBtn btn btn-primary btnInfo" data-toggle="tooltip" data-placement="top" title="Edit"><i class="ft-edit"></i></a>
-                                                <!--<a class="actionBtn btnEdit" data-toggle="tooltip" data-placement="top" title="Edit"><i class="ft-edit-3"></i></a>-->
+                                                @if(auth()->user()->is_admin)
+                                                <a href="{{ route('impersonate', $user->id) }}" class="actionBtn btn btn-primary btnInfo" data-toggle="tooltip" data-placement="top" title="Impersonate"><i class="fa fa-user-secret"></i></a>
+                                                @endif
+                                                
                                                 <a href="#" class="btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info"><i class="ft-eye-off"></i></a>
-                                             
-                                               <a class="btn btn-danger btnInfo" onclick="return confirm('Are you sure?')" href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="ft-trash-2"></i></a>
                                               </td>
                                           </tr>
                                         

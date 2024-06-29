@@ -85,9 +85,16 @@
 
 
                               <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                                <button type="submit" class="btn btn-primary">
+                              @impersonating($guard = null)
+                              <button type="submit" class="btn btn-primary" disabled>
                                   <i class="fa fa-check-square-o"></i> submit
                               </button>
+                              @else
+                              <button type="submit" class="btn btn-primary">
+                                  <i class="fa fa-check-square-o"></i> submit
+                              </button>
+                                @endImpersonating
+                                
                             </div>
                         </div>
                     </div>

@@ -58,10 +58,28 @@
               </li>
             </ul>
             <ul class="nav navbar-nav float-right">
-              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="{{ url('admin/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></span><span class="user-name">Admin</span></a>
+            <li class="dropdown dropdown-user nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i><span>
+              @php
+              $unreadNotifications = auth()->user()->unreadNotifications()
+              ->where('data->expiry_date', '>', date('Y-m-d'))
+              ->count();
+              @endphp
+
+              {{ $unreadNotifications ? $unreadNotifications : '' }}</span></a>
+            
+            </li>
+            </ul>
+            <ul class="nav navbar-nav float-right">
+              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="{{ url('admin/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></span><span class="user-name">{{ auth()->user()->name }}</span></a>
                 <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="fa fa-id-card-o"></i> View Profile</a>
                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+                  <div class="dropdown-divider"></div>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item"><i class="ft-power"></i>Logout</button>
+                    </form>
+                  
                 </div>
               </li>
             </ul>
@@ -84,6 +102,10 @@
                    </li>
                   </ul>
                 </li>
+                @impersonating($guard = null)
+                <li class=" nav-item"><a href="{{ route('impersonate.leave') }}"><i class="ft-power"></i><span class="menu-title" data-i18n="">Leave Impersonation</span></a>
+                </li>
+                @endImpersonating
             </ul>
         </div>
     </div>
