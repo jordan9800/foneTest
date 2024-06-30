@@ -51,6 +51,7 @@
                                               <th>Description</th>
                                               <th>Expiry Date</th>
                                               <th>Type</th>
+                                              <th>Read At</th>
                                               <th>Action</th>
                                           </tr>
                                       </thead>
@@ -61,6 +62,13 @@
                                             <td>{{ $notification->data['description'] }}</td>
                                             <td>{{ $notification->data['expiry_date'] }}</td>
                                             <td>{{ $notification->data['type'] }}</td>
+                                            <td>
+                                              @if(isset($notification->read_at))
+                                               {{ \Carbon\Carbon::parse($notification->read_at)->format('Y-m-d') }}
+                                              @else
+                                               -
+                                              @endif
+                                            </td>
                                             <td>
                                               @if(isset($notification->read_at))
                                                - 

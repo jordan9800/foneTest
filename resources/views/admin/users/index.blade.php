@@ -73,7 +73,7 @@
                                                 <a href="{{ route('impersonate', $user->id) }}" class="actionBtn btn btn-primary btnInfo" data-toggle="tooltip" data-placement="top" title="Impersonate"><i class="fa fa-user-secret"></i></a>
                                                 @endif
                                                 
-                                                <a href="#" class="btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info"><i class="ft-eye-off"></i></a>
+                                                <a href="{{ route('notifications.index', $user->id) }}" class="btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Notifications"><i class="fa fa-bell-o"></i></a>
                                               </td>
                                           </tr>
                                         

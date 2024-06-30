@@ -28,7 +28,9 @@ class NotificationController extends Controller
             ->when(isset($attributes['status']) && $attributes['status'] == 'unread', function ($query) {
                 $query->whereNull('read_At');
             })
-            ->where('data->expiry_date', '>', date('Y-m-d'))->get();
+            ->where('data->expiry_date', '>', date('Y-m-d'))
+            ->orderByDesc('notifications.read_at')
+            ->get();
 
         return view('admin.users.notification', ['user_id' => $userId, 'notifications' => $notifications]);
     }
@@ -57,6 +59,9 @@ class NotificationController extends Controller
 
     }
 
+    /**
+     * Mark notification as read
+     */
     public function markRead(Request $request)
     {
         $attributes = $request->all();

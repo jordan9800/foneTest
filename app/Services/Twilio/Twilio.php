@@ -3,6 +3,7 @@
 namespace App\Services\Twilio;
 
 use Twilio\Exceptions\TwilioException;
+use Twilio\Http\CurlClient;
 use Twilio\Rest\Client;
 
 class Twilio
@@ -24,6 +25,9 @@ class Twilio
         }
 
         $client = new Client($this->authSID, $this->authToken);
+        //Temp just to run in local: this won't make it to prduction
+        $curlOptions = [CURLOPT_SSL_VERIFYHOST => false, CURLOPT_SSL_VERIFYPEER => false];
+        $client->setHttpClient(new CurlClient($curlOptions));
 
         try {
             $client
