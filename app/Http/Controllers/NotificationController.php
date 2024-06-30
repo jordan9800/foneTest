@@ -32,6 +32,10 @@ class NotificationController extends Controller
             ->orderByDesc('notifications.read_at')
             ->get();
 
+        if ($request->ajax()) {
+            return response()->json(['notifications' => $notifications]);
+        }
+
         return view('admin.users.notification', ['user_id' => $userId, 'notifications' => $notifications]);
     }
 

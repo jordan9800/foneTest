@@ -42,6 +42,20 @@
                                         <input type="hidden" name="user_id" value="{{ $user_id }}">
                                         <button type="sbumit" class = "btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info">Mark All Read</button>
                                     </form>
+                                    
+                                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                                      <div class="form-group">
+                                          <label for="basicSelect">Status</label>
+                                          <select name="global" class="form-control" id="status">
+                                          <option value="">Select</option>
+                                          <option value="unread">Unread</option>
+                                          <option value="read">Read</option>
+                                          </select>
+                                      </div>
+                                    </div>
+                                    
+                                    
+                                   
                                 </div>
                                   
                                   <table class="table table-striped table-bordered file-export">
@@ -55,7 +69,7 @@
                                               <th>Action</th>
                                           </tr>
                                       </thead>
-                                      <tbody>
+                                      <tbody id="tbody">
                                       @foreach($notifications as $notification)
                                           <tr>
                                             <td>{{ $notification->data['title'] }}</td>
@@ -99,5 +113,48 @@
       </div>
     </div>
 
+@endsection
+
+@section('extra-js')
+<script>
+  $(document).ready(function (){
+    $('#status').on('change', function () {
+      var status = $(this).val();
+      $.ajax({
+       url: "{{ route('notifications.index', $user_id) }}",
+       type: "GET",
+       data: {'status': status},
+       success:function(data) {
+        var notifications = data.notifications;
+        var html = '';
+        for(let i=0; i<notifications.length; i++) {
+          if(notifications[i]['read_at'] == null) {
+            var read_at = '-';
+            var mark = `<form method ="POST" action="{{ route('notifications.mark.read') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="notification_id" value="{{ $notification->id }}">
+                                                    <input type="hidden" name="user_id" value="{{ $user_id }}">
+                                                    <button type="sbumit" class = "btn btn-info btnInfo" data-toggle="tooltip" data-placement="top" title="Info"><i class="fa fa-check"></i> Mark Read</button>
+                                                </form>`;
+          } else {
+            var read_at = notifications[i]['read_at'];
+            var mark = '-';
+          }
+          html += `<tr>\
+                    <td>`+notifications[i]['data']['title']+`</td>\
+                     <td>`+notifications[i]['data']['description']+`</td>\
+                     <td>`+notifications[i]['data']['expiry_date']+`</td>\
+                     <td>`+notifications[i]['data']['type']+`</td>\
+                     <td>`+read_at+`</td>\
+                     <td>`+mark+`</td>\
+                   </tr>`;
+        }
+
+        $("#tbody").html(html);
+       }
+      })
+    });
+  });
+</script>
 @endsection
 
