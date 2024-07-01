@@ -58,6 +58,7 @@
                                             <td><a href="#">{{$user->id}}</a></td>
                                             <td>{{$user->name }}</td>
                                             <td>{{$user->email}}</td>
+                                            
                                             @if(is_null($user->phone))
                                                 <td>-</td> 
                                             @else 
@@ -66,7 +67,11 @@
                                             @if($user->notification_switch == 0)
                                                 <td>Off</td> 
                                             @else 
-                                                <td>On</td>
+                                                <td>On <br> <br> 
+                                                  <small>Unread Notifications </small>
+                                                  <br> 
+                                                  <small> ({{count($user->unreadnotifications)}}) </small>
+                                                </td>
                                             @endif 
                                               <td>
                                                 @if(auth()->user()->is_admin)
