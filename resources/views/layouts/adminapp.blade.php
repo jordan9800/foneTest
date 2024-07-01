@@ -41,7 +41,7 @@
         <div class="navbar-header">
           <ul class="nav navbar-nav flex-row">
             <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-            <li class="nav-item"><a class="navbar-brand" href="#"><img class="brand-logo" alt="stack admin logo" src="{{ url('admin/app-assets/images/logo/stack-logo-light.png') }}">
+            <li class="nav-item"><a class="navbar-brand" href="{{ route('dashboard') }}"><img class="brand-logo" alt="stack admin logo" src="{{ url('admin/app-assets/images/logo/stack-logo-light.png') }}">
                 <h2 class="brand-text">Peoplefone</h2></a></li>
             <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
           </ul>
@@ -77,8 +77,7 @@
             </ul>
             <ul class="nav navbar-nav float-right">
               <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="{{ url('admin/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></span><span class="user-name">{{ auth()->user()->name }}</span></a>
-                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="fa fa-id-card-o"></i> View Profile</a>
-                   <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('users.edit', auth()->user()->id) }}"><i class="ft-user"></i> Edit Profile</a>
+                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('users.edit', auth()->user()->id) }}"><i class="ft-user"></i> Edit Profile</a>
                   <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -99,7 +98,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a href="#"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+                <li class=" nav-item"><a href="{{ route('dashboard') }}"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
                 </li>
                 <li class=" nav-item"><a href="#"><i class="fa fa-table"></i><span class="menu-title" data-i18n="">Users</span></a>
                    <ul class="menu-content">
