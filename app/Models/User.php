@@ -47,4 +47,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * @return bool
+     */
+    public function canImpersonate()
+    {
+        return $this->is_admin == 1;
+    }
 }
